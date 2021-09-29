@@ -1,0 +1,68 @@
+{
+    "name": "rosendito/laravel-taxonomies",
+    "description": "Terms and Taxonomies for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "taxonomies",
+        "terms",
+        "categories",
+        "nestable",
+        "eloquent",
+        "model",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "rosendito",
+            "email": "rosendojose0617@gmail.com",
+            "homepage": "https://twitter.com/rosenditojs",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php"                 : "^7.4|^8.0",
+        "illuminate/support"  : "^6.0|^7.0|^8.0",
+        "illuminate/database" : "^6.0|^7.0|^8.0",
+    },
+    "require-dev": {
+        "laravel/framework"   : "^6.0|^7.0|^8.0",
+        "mockery/mockery"     : "~1.0",
+        "phpunit/phpunit"     : "^8.0|^9.0",
+        "orchestra/testbench" : "^4.0|^5.0|^6.0",
+        "doctrine/dbal"       : "^2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rosendito\\Taxonomies\\" : "src"
+        },
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rosendito\\Taxonomies\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "taxonomies": "vendor/bin/phpunit",
+        "taxonomies-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rosendito\\Taxonomies\\TaxonomiesServiceProvider"
+            ]
+        },
+        "branch-alias" : {
+            "dev-master" : "1.0.x-dev"
+        }
+    },
+    "support" : {
+        "source" : "https://github.com/Rosendito/laravel-taxonomies",
+        "issues" : "https://github.com/Rosendito/laravel-taxonomies/issues"
+    }
+}
