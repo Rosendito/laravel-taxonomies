@@ -20,7 +20,7 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php"                 : "^7.4|^8.0",
         "illuminate/support"  : "^6.0|^7.0|^8.0",
@@ -44,9 +44,8 @@
         }
     },
     "scripts": {
-        "taxonomies": "vendor/bin/phpunit",
-        "taxonomies-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
         "sort-packages": true
