@@ -40,7 +40,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Rosendito\\Taxonomies\\Test\\": "tests"
+            "Tests\\": "tests"
         }
     },
     "scripts": {
