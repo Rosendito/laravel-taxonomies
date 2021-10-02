@@ -2,17 +2,34 @@
 
 namespace Tests;
 
+use Rosendito\Taxonomies\Taxonomy;
 use Tests\Support\Post;
 
 class TermTest extends TestCase
 {
-    public function testTrueIsTrue(): void
-    {
-        Post::create([
-            'title' => 'My first blogpost',
-            'body' => 'Hello world'
-        ]);
+    /**
+     * Taxonomies names for testing purpose
+     *
+     * @var string[]
+     */
+    protected array $taxonomies = [
+        'Category',
+        'Tag'
+    ];
 
-        $this->assertCount(1, Post::all());
+    /**
+     * Test create taxonomies
+     *
+     * @return void
+     */
+    public function testCreateTaxonomies(): void
+    {
+        foreach ($this->taxonomies as $taxonomy) {
+            Taxonomy::create([
+                'name' => $taxonomy
+            ]);
+        }
+
+        $this->assertCount(2, Taxonomy::all());
     }
 }

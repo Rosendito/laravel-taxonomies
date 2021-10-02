@@ -11,6 +11,20 @@ class TestCase extends Orchestra
     use RefreshDatabase;
 
     /**
+     * Migrations to be executed
+     *
+     * @var string[]
+     */
+    protected array $migrations = [
+        '/../database/migrations/000000_create_taxonomies_table.php'
+            => 'CreateTaxonomiesTable',
+        '/../database/migrations/000001_create_terms_table.php'
+            => 'CreateTermsTable',
+        '/../database/migrations/000002_create_taggables_table.php'
+            => 'CreateTaggablesTable',
+    ];
+
+    /**
      * @param [type] $app
      * @return void
      */
@@ -33,12 +47,26 @@ class TestCase extends Orchestra
     }
 
     /**
-     * Load migrations for create database
+     * Create database
      *
      * @return void
      */
     public function createDatabase(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/Support/migrations');
+        $this->runTestsMigrations();
+    }
+
+    /**
+     * Run migrations
+     *
+     * @return void
+     */
+    public function runTestsMigrations(): void
+    {
+        foreach ($this->migrations as $file => $className) {
+            include_once __DIR__ . $file;
+
+            (new $className)->up();
+        }
     }
 }
