@@ -2,14 +2,11 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Rosendito\Taxonomies\TaxonomiesServiceProvider;
 
 class TestCase extends Orchestra
 {
-    use RefreshDatabase;
-
     /**
      * Migrations to be executed
      *
@@ -22,6 +19,8 @@ class TestCase extends Orchestra
             => 'CreateTermsTable',
         '/../database/migrations/000002_create_taggables_table.php'
             => 'CreateTaggablesTable',
+        '/Support/migrations/0000_00_00_000001_create_posts_table.php'
+            => 'CreatePostsTable'
     ];
 
     /**
@@ -47,26 +46,37 @@ class TestCase extends Orchestra
     }
 
     /**
+     * Teastdown test environment
+     *
+     * @return void
+     */
+    public function tearDown(): void
+    {
+        $this->destroyDatabase();
+        parent::tearDown();
+    }
+
+    /**
      * Create database
      *
      * @return void
      */
     public function createDatabase(): void
     {
-        $this->runTestsMigrations();
-    }
-
-    /**
-     * Run migrations
-     *
-     * @return void
-     */
-    public function runTestsMigrations(): void
-    {
         foreach ($this->migrations as $file => $className) {
             include_once __DIR__ . $file;
 
             (new $className)->up();
         }
+    }
+
+    /**
+     * Destroy database
+     *
+     * @return void
+     */
+    public function destroyDatabase(): void
+    {
+        $this->artisan('db:wipe');
     }
 }

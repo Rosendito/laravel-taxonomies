@@ -22,7 +22,7 @@ class TermTest extends TestCase
      *
      * @return void
      */
-    public function testCreateTaxonomies(): void
+    public function test_create_taxonomies(): void
     {
         foreach ($this->taxonomies as $taxonomy) {
             Taxonomy::create([
