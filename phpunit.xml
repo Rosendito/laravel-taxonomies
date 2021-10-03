@@ -13,11 +13,6 @@
   stopOnFailure="false"
   xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 >
-  <coverage>
-    <include>
-      <directory suffix=".php">src/</directory>
-    </include>
-  </coverage>
   <testsuites>
     <testsuite name="Unit">
       <directory suffix="Test.php">./tests</directory>
@@ -29,7 +24,6 @@
     <env name="DB_PORT" value="3306"/>
     <env name="DB_DATABASE" value="tests"/>
     <env name="DB_USERNAME" value="root"/>
-    <env name="DB_PASSWORD" value=""/>
     <env name="APP_ENV" value="testing"/>
     <env name="BCRYPT_ROUNDS" value="4"/>
     <env name="CACHE_DRIVER" value="array"/>
