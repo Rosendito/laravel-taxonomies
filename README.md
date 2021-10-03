@@ -1,4 +1,4 @@
-# Taxonomies and terms for Larave;
+# Taxonomies and terms for Laravel
 [![Tests](https://github.com/Rosendito/laravel-taxonomies/actions/workflows/run-tests.yml/badge.svg?branch=master&event=push)](https://github.com/Rosendito/laravel-taxonomies/actions/workflows/run-tests.yml)
 
 ## Installation
