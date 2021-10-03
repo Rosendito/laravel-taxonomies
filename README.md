@@ -1,8 +1,19 @@
-# Taxonomies and terms for Larave
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/run-tests?label=tests)](https://github.com/Rosendito/laravel-taxonomies/actions?query=workflow%3Arun-tests+branch%3Amaster)
+# Taxonomies and terms for Larave;
+[![Tests](https://github.com/Rosendito/laravel-taxonomies/actions/workflows/run-tests.yml/badge.svg?branch=master&event=push)](https://github.com/Rosendito/laravel-taxonomies/actions/workflows/run-tests.yml)
 
-To use run the following command:
+## Installation
+You can install the package via composer:
+
+```bash
+composer require rosendito/laravel-taxonomies
+```
+
+You can publish and run the migrations with:
+
+```bash
 php artisan vendor:publish --provider="Rosendito\Taxonomies\TaxonomiesServiceProvider" --tag="migrations"
+php artisan migrate
+```
 
 ## Resources
 - https://laravelpackage.com/ guide for create a laravel package
