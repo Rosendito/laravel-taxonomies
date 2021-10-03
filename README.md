@@ -1,3 +1,5 @@
+# Taxonomies and terms for Larave
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/:vendor_slug/:package_slug/run-tests?label=tests)](https://github.com/Rosendito/laravel-taxonomies/actions?query=workflow%3Arun-tests+branch%3Amaster)
 
 To use run the following command:
 php artisan vendor:publish --provider="Rosendito\Taxonomies\TaxonomiesServiceProvider" --tag="migrations"
