@@ -4,7 +4,6 @@ namespace Tests;
 
 use Rosendito\Taxonomies\Taxonomy;
 use Rosendito\Taxonomies\Term;
-use Tests\Support\Post;
 
 class TermTest extends TestCase
 {
