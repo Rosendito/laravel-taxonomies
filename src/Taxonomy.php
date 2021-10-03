@@ -18,4 +18,12 @@ class Taxonomy extends Model
         'name',
         'description'
     ];
+
+    /**
+     * Get the terms associated
+     */
+    public function terms()
+    {
+        return $this->hasMany(Term::class);
+    }
 }

@@ -23,7 +23,7 @@ class Term extends Model
     ];
 
     /**
-     * Get the media type associated
+     * Get the taxonomy associated
      */
     public function taxonomy()
     {
