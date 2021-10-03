@@ -5,6 +5,7 @@ namespace Rosendito\Taxonomies;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Rosendito\Taxonomies\Helpers\EloquentHelper;
+use Illuminate\Support\Collection as BaseCollection;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasTaxonomies
@@ -72,9 +73,9 @@ trait HasTaxonomies
      * Add multiples terms
      *
      * @param int|string|Taxonomy $taxonomy
-     * @param array[int|string|Term] $terms
+     * @param array[int|string|Term]|Collection[int|string|Term] $terms
      */
-    public function addTerms($taxonomy, array $terms)
+    public function addTerms($taxonomy, $terms)
     {
         $taxonomy = EloquentHelper::searchByQuery(
             Taxonomy::query(),
@@ -82,7 +83,11 @@ trait HasTaxonomies
             Taxonomy::class
         )->first();
 
-        $terms = collect($terms)->map(
+        if (!$terms instanceof BaseCollection) {
+            $terms = collect($terms);
+        }
+
+        $terms = $terms->map(
             fn($term) => $this->getTermModel($taxonomy, $term)
         )->filter()->pluck('id');
 
@@ -121,10 +126,10 @@ trait HasTaxonomies
      * Remove terms by taxonomy, pass third param to true for removeAll
      *
      * @param int|string|Taxonomy $taxonomy
-     * @param array[int|string|Term]null $terms
+     * @param array[int|string|Term]|Collection[int|string|Term]|null $terms
      * @param boolean $removeAll
      */
-    public function removeTerms($taxonomy, ?array $terms, bool $removeAll = false)
+    public function removeTerms($taxonomy, $terms, bool $removeAll = false)
     {
        if ($removeAll) {
            return $this->terms()->detach(
@@ -132,7 +137,11 @@ trait HasTaxonomies
            );
        }
 
-       $terms = collect($terms)->map(
+       if (!$terms instanceof BaseCollection) {
+           $terms = collect($terms);
+       }
+
+       $terms = $terms->map(
             fn($term) => $this->getTermModel($taxonomy, $term)
        )->filter()->pluck('id');
 
